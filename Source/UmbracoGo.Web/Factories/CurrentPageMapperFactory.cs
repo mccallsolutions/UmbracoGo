@@ -10,17 +10,27 @@ using Zone.UmbracoMapper;
 
 namespace UmbracoGo.Web.Factories
 {
+    /// <summary>
+    /// This factory creates strongly typed document type POCOs from the CurrentPage passed in. This helps create clean view models and fallover values 
+    /// for certain properties.
+    /// </summary>
     public class CurrentPageMapperFactory : ICurrentPageMapperFactory
     {
         private readonly IUmbracoMapper _umbracoMapper;
+        private Website _website;
 
-        public CurrentPageMapperFactory()
+        public CurrentPageMapperFactory(IUmbracoMapper umbracoMapper)
         {
-            _umbracoMapper = new UmbracoMapper();
+            _umbracoMapper = umbracoMapper;
         }
 
-        public Website MapWebsite(IPublishedContent currentPage)
+        public Website CreateWebsite(IPublishedContent currentPage)
         {
+            if (_website != null)
+            {
+                return _website;
+            }
+
             IPublishedContent websitePage = currentPage.AncestorsOrSelf("Website").FirstOrDefault();
 
             if (websitePage == null)
@@ -28,22 +38,34 @@ namespace UmbracoGo.Web.Factories
                 throw new NullReferenceException("No ancestor or self Website document type found.");
             }
 
-            var website = new Website();
-            _umbracoMapper.Map(websitePage, website);
+            _website = new Website();
+            _umbracoMapper.Map(websitePage, _website);
 
-            return website;
-        }
+            return _website;
+        }        
 
-        public WebPage MapWebPage(IPublishedContent currentPage)
+        public T CreateWebPage<T>(IPublishedContent currentPage) where T : WebPage, new()
         {
-            var webPage = new WebPage();
-            _umbracoMapper.Map(currentPage, webPage);
+            if (!typeof(WebPage).IsSameOrSubclass(typeof(T)))
+            {
+                throw new Exception(string.Format("Type {0} is not of type {1}", typeof (T).Name, typeof (WebPage).Name));
+            }
 
-            Website website = MapWebsite(currentPage);
+            try
+            {
+                var t = new T();
+                _umbracoMapper.Map(currentPage, t);
 
-            webPage.SetFalloverValues(website);          
+                Website website = CreateWebsite(currentPage);
 
-            return webPage;
+                t.SetFalloverValues(website);
+
+                return t;
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }

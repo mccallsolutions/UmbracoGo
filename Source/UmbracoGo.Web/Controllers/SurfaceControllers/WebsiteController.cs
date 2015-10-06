@@ -16,7 +16,7 @@ namespace UmbracoGo.Web.Controllers.SurfaceControllers
 
         public virtual ActionResult SiteName()
         {
-            Website website = _currentPageMapperFactory.MapWebsite(CurrentPage);
+            Website website = _currentPageMapperFactory.CreateWebsite(CurrentPage);
             return PartialView(MVC.Website.Views._SiteName, website.SiteName);
         }
     }

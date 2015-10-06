@@ -16,13 +16,13 @@ namespace UmbracoGo.Web.Controllers.SurfaceControllers
 
         public virtual ActionResult MetaTitle()
         {
-            WebPage webPage = _currentPageMapperFactory.MapWebPage(CurrentPage);
+            var webPage = _currentPageMapperFactory.CreateWebPage<WebPage>(CurrentPage);
             return PartialView(MVC.WebPage.Views._MetaTitle, webPage.MetaTitle);
         }
 
         public virtual ActionResult MetaElements()
         {
-            WebPage webPage = _currentPageMapperFactory.MapWebPage(CurrentPage);
+            var webPage = _currentPageMapperFactory.CreateWebPage<WebPage>(CurrentPage);
             return PartialView(MVC.WebPage.Views._MetaElements, webPage);
         }
     }

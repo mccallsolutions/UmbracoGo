@@ -9,10 +9,34 @@ namespace UmbracoGo.Web.ExtensionMethods
     {
         public static void SetFalloverValues(this WebPage webPage, Website website)
         {
+            // Content tab
+            webPage.PageTitle = FalloverPageTitle(webPage);
+            webPage.MenuTitle = FalloverMenuTitle(webPage);
+            // SEO tab
             webPage.MetaTitle = FalloverMetaTitle(webPage, website);
             webPage.MetaAuthor = FalloverMetaAuthor(webPage, website);
             webPage.MetaDescription = FalloverMetaDescription(webPage);
-            webPage.MetaKeywords = FalloverMetaKeywords(webPage);          
+            webPage.MetaKeywords = FalloverMetaKeywords(webPage);     
+        }
+
+        private static string FalloverMenuTitle(WebPage webPage)
+        {
+            if (string.IsNullOrEmpty(webPage.PageTitle))
+            {
+                webPage.MenuTitle = webPage.PageTitle;
+            }
+
+            return webPage.MenuTitle;
+        }
+
+        private static string FalloverPageTitle(WebPage webPage)
+        {
+            if (string.IsNullOrEmpty(webPage.PageTitle))
+            {
+                webPage.PageTitle = webPage.Name;
+            }
+
+            return webPage.PageTitle;
         }
 
         private static string FalloverMetaTitle(WebPage webPage, Website website)

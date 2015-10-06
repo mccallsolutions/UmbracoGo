@@ -326,6 +326,7 @@
     <Compile Include="Controllers\RenderMvcControllers\HomeLandingPageController.cs" />
     <Compile Include="Controllers\SurfaceControllers\WebsiteController.cs" />
     <Compile Include="Controllers\SurfaceControllers\WebPageController.cs" />
+    <Compile Include="ExtensionMethods\TypeExtensionMethods.cs" />
     <Compile Include="ExtensionMethods\WebPageFalloverExtensionMethods.cs" />
     <Compile Include="Factories\Contracts\ICurrentPageMapperFactory.cs" />
     <Compile Include="Factories\CurrentPageMapperFactory.cs" />
@@ -336,6 +337,7 @@
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DocumentTypes\SiteData\Website.cs" />
+    <Compile Include="Models\DocumentTypes\WebPages\LandingPages\HomeLandingPage.cs" />
     <Compile Include="Models\DocumentTypes\WebPages\WebPage.cs" />
     <Compile Include="PartialsController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>

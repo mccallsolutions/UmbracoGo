@@ -6,6 +6,7 @@ using Ninject.Web.Common;
 using UmbracoGo.Web;
 using UmbracoGo.Web.Factories;
 using UmbracoGo.Web.Factories.Contracts;
+using Zone.UmbracoMapper;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(NinjectWebCommon), "Stop")]
@@ -62,6 +63,7 @@ namespace UmbracoGo.Web
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.Bind<IUmbracoMapper>().To<UmbracoMapper>().InSingletonScope();
             kernel.Bind<ICurrentPageMapperFactory>().To<CurrentPageMapperFactory>().InSingletonScope();
         }        
     }

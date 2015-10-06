@@ -6,7 +6,7 @@ namespace UmbracoGo.Web.Factories.Contracts
 {
     public interface ICurrentPageMapperFactory
     {
-        Website MapWebsite(IPublishedContent currentPage);
-        WebPage MapWebPage(IPublishedContent currentPage);
+        Website CreateWebsite(IPublishedContent currentPage);
+        T CreateWebPage<T>(IPublishedContent currentPage) where T : WebPage, new();
     }
 }
