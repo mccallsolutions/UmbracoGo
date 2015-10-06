@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using Umbraco.Web.Mvc;
 using UmbracoGo.Web.Factories.Contracts;
 using UmbracoGo.Web.Models.DocumentTypes.SiteData;
@@ -18,6 +19,12 @@ namespace UmbracoGo.Web.Controllers.SurfaceControllers
         {
             Website website = _currentPageMapperFactory.CreateWebsite(CurrentPage);
             return PartialView(MVC.Website.Views._SiteName, website.SiteName);
+        }
+
+        public virtual ActionResult MainNavigation()
+        {
+            Website website = _currentPageMapperFactory.CreateWebsite(CurrentPage);
+            return PartialView(MVC.Website.Views._MainNavigation, website.MainNavigation);
         }
     }
 }

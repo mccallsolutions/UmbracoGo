@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using RJP.MultiUrlPicker.Models;
 using Umbraco.Core.Models;
 using Umbraco.Web;
 using UmbracoGo.Web.ExtensionMethods;
@@ -17,20 +18,16 @@ namespace UmbracoGo.Web.Factories
     public class CurrentPageMapperFactory : ICurrentPageMapperFactory
     {
         private readonly IUmbracoMapper _umbracoMapper;
-        private Website _website;
+        private readonly INavigationViewModelFactory _navigationViewModelFactory;
 
-        public CurrentPageMapperFactory(IUmbracoMapper umbracoMapper)
+        public CurrentPageMapperFactory(IUmbracoMapper umbracoMapper, INavigationViewModelFactory navigationViewModelFactory)
         {
             _umbracoMapper = umbracoMapper;
+            _navigationViewModelFactory = navigationViewModelFactory;
         }
 
         public Website CreateWebsite(IPublishedContent currentPage)
         {
-            if (_website != null)
-            {
-                return _website;
-            }
-
             IPublishedContent websitePage = currentPage.AncestorsOrSelf("Website").FirstOrDefault();
 
             if (websitePage == null)
@@ -38,10 +35,13 @@ namespace UmbracoGo.Web.Factories
                 throw new NullReferenceException("No ancestor or self Website document type found.");
             }
 
-            _website = new Website();
-            _umbracoMapper.Map(websitePage, _website);
+            var website = new Website();
+            _umbracoMapper.Map(websitePage, website);
 
-            return _website;
+            var multiUrls = websitePage.GetPropertyValue<MultiUrls>("mainNavigation");
+            website.MainNavigation = _navigationViewModelFactory.Create(multiUrls);
+
+            return website;
         }        
 
         public T CreateWebPage<T>(IPublishedContent currentPage) where T : WebPage, new()

@@ -1,0 +1,7 @@
+﻿@using UmbracoGo.Web.Models.ViewModels
+@inherits UmbracoViewPage<NavigationViewModel>
+
+@foreach (NavigationItemViewModel item in Model.Items)
+{
+    <li><a href="@item.Url" target="@item.Target">@item.Text</a></li>
+}

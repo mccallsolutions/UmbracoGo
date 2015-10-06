@@ -27,6 +27,7 @@ using T4MVC;
 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
 public static partial class MVC
 {
+    public static UmbracoGo.Web.Controllers.RenderMvcControllers.ContentWebPageController ContentWebPage = new UmbracoGo.Web.Controllers.RenderMvcControllers.T4MVC_ContentWebPageController();
     public static UmbracoGo.Web.Controllers.RenderMvcControllers.HomeLandingPageController HomeLandingPage = new UmbracoGo.Web.Controllers.RenderMvcControllers.T4MVC_HomeLandingPageController();
     public static UmbracoGo.Web.Controllers.SurfaceControllers.WebPageController WebPage = new UmbracoGo.Web.Controllers.SurfaceControllers.T4MVC_WebPageController();
     public static UmbracoGo.Web.Controllers.SurfaceControllers.WebsiteController Website = new UmbracoGo.Web.Controllers.SurfaceControllers.T4MVC_WebsiteController();

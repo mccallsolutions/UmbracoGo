@@ -23,10 +23,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", MVC.HomeLandingPage.Index(), new { @class = "navbar-brand" })
+                <a href="/" class="navbar-brand">@Html.Action(MVC.Website.SiteName())</a>                
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    @Html.Action(MVC.Website.MainNavigation())
                 </ul>
             </div>
         </div>

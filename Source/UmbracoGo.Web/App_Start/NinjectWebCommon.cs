@@ -65,6 +65,7 @@ namespace UmbracoGo.Web
         {
             kernel.Bind<IUmbracoMapper>().To<UmbracoMapper>().InSingletonScope();
             kernel.Bind<ICurrentPageMapperFactory>().To<CurrentPageMapperFactory>().InSingletonScope();
+            kernel.Bind<INavigationViewModelFactory>().To<NavigationViewModelFactory>().InSingletonScope();
         }        
     }
 }

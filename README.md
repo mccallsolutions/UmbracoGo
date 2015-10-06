@@ -30,6 +30,7 @@ Here are some of the packages included that are worth mentioning:
 - T4MVC (Strongly types controller and views)
 - Bootstrap 3.3.5 (Responsive layout framework)
 - Ninject for MVC 5 (Dependency injection)
+- Multi URL Picker 1.3.1 (Generic navigation)
 
 ### Source safe compatible
 This Visual Studio solution is built to be source safe (Git) compatible so I don't store anything unnecessary in our repositories. Everything I require is automatically pulled in using NuGet packages.
@@ -50,6 +51,7 @@ We have a a few simple document types to get you started. They allow for multili
   - **Website** (Root node for each culture/domain with common site settings.)
     - *[Generic]* `Redirect To Node` (Redirects a user to the selected node instead of this node.)
     - *[Settings]* `Site Name` (The name of the site.)
+    - *[Navigation]* 'Main Navigation' (The main navigation items.)
 - **Web Pages** (Root for all web pages and contains common page settings.)
   - *[Generic]* `Hide In Navigation` (If ticked this content won't be displayed in any navigation.)
   - *[Generic]* `Redirect To Node` (Redirects a user to the selected node instead of this node.)
@@ -62,5 +64,6 @@ We have a a few simple document types to get you started. They allow for multili
   - *[SEO]* `Meta Description` (The description of the content used by search engines.)
   - *[SEO]* `Meta Keywords` (The keywords describing this content used by search engines. If empty the meta description is converted into keywords.)
   - **Content Pages** (Empty - used as folder)
+    - **Content Web Page** (Example content page with image)
   - **Landing Pages** (Empty - used as folder)
     - **Home Landing Page** (Example landing page.)

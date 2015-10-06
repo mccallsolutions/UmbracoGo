@@ -23,12 +23,12 @@ using System.Web.Mvc.Ajax;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
 using T4MVC;
-namespace UmbracoGo.Web.Controllers.SurfaceControllers
+namespace UmbracoGo.Web.Controllers.RenderMvcControllers
 {
-    public partial class WebsiteController
+    public partial class ContentWebPageController
     {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        protected WebsiteController(Dummy d) { }
+        protected ContentWebPageController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected RedirectToRouteResult RedirectToAction(ActionResult result)
@@ -56,15 +56,21 @@ namespace UmbracoGo.Web.Controllers.SurfaceControllers
             return RedirectToActionPermanent(taskResult.Result);
         }
 
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult Index()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public WebsiteController Actions { get { return MVC.Website; } }
+        public ContentWebPageController Actions { get { return MVC.ContentWebPage; } }
         [GeneratedCode("T4MVC", "2.0")]
         public readonly string Area = "";
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Name = "Website";
+        public readonly string Name = "ContentWebPage";
         [GeneratedCode("T4MVC", "2.0")]
-        public const string NameConst = "Website";
+        public const string NameConst = "ContentWebPage";
 
         static readonly ActionNamesClass s_actions = new ActionNamesClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -72,18 +78,24 @@ namespace UmbracoGo.Web.Controllers.SurfaceControllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass
         {
-            public readonly string SiteName = "SiteName";
-            public readonly string MainNavigation = "MainNavigation";
+            public readonly string Index = "Index";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
-            public const string SiteName = "SiteName";
-            public const string MainNavigation = "MainNavigation";
+            public const string Index = "Index";
         }
 
 
+        static readonly ActionParamsClass_Index s_params_Index = new ActionParamsClass_Index();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_Index IndexParams { get { return s_params_Index; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_Index
+        {
+            public readonly string model = "model";
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -94,38 +106,24 @@ namespace UmbracoGo.Web.Controllers.SurfaceControllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
-                public readonly string _MainNavigation = "_MainNavigation";
-                public readonly string _SiteName = "_SiteName";
             }
-            public readonly string _MainNavigation = "~/Views/Website/_MainNavigation.cshtml";
-            public readonly string _SiteName = "~/Views/Website/_SiteName.cshtml";
         }
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public partial class T4MVC_WebsiteController : UmbracoGo.Web.Controllers.SurfaceControllers.WebsiteController
+    public partial class T4MVC_ContentWebPageController : UmbracoGo.Web.Controllers.RenderMvcControllers.ContentWebPageController
     {
-        public T4MVC_WebsiteController() : base(Dummy.Instance) { }
+        public T4MVC_ContentWebPageController() : base(Dummy.Instance) { }
 
         [NonAction]
-        partial void SiteNameOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+        partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, Umbraco.Web.Models.RenderModel model);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult SiteName()
+        public override System.Web.Mvc.ActionResult Index(Umbraco.Web.Models.RenderModel model)
         {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.SiteName);
-            SiteNameOverride(callInfo);
-            return callInfo;
-        }
-
-        [NonAction]
-        partial void MainNavigationOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
-
-        [NonAction]
-        public override System.Web.Mvc.ActionResult MainNavigation()
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.MainNavigation);
-            MainNavigationOverride(callInfo);
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
+            IndexOverride(callInfo, model);
             return callInfo;
         }
 

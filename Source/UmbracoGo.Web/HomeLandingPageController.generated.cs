@@ -28,9 +28,6 @@ namespace UmbracoGo.Web.Controllers.RenderMvcControllers
     public partial class HomeLandingPageController
     {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public HomeLandingPageController() { }
-
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected HomeLandingPageController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
