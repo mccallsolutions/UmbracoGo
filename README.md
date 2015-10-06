@@ -1,4 +1,7 @@
 # UmbracoGo
+
+**In development check back soon**
+
 A base Umbraco 7.3.0 Visual Studio 2013 solution ready for team development, best practices, and continuous integration.
 
 The solution is built on a empty MVC solution with Umbraco 7.3.0 on top. 
