@@ -20,10 +20,12 @@ namespace UmbracoGo.Web.Factories
         private readonly IUmbracoMapper _umbracoMapper;
         private readonly INavigationViewModelFactory _navigationViewModelFactory;
 
-        public CurrentPageMapperFactory(IUmbracoMapper umbracoMapper, INavigationViewModelFactory navigationViewModelFactory)
+        public CurrentPageMapperFactory(
+            IUmbracoMapper umbracoMapper, 
+            INavigationViewModelFactory navigationViewModelFactory)
         {
             _umbracoMapper = umbracoMapper;
-            _navigationViewModelFactory = navigationViewModelFactory;
+            _navigationViewModelFactory = navigationViewModelFactory;         
         }
 
         public Website CreateWebsite(IPublishedContent currentPage)
@@ -38,8 +40,9 @@ namespace UmbracoGo.Web.Factories
             var website = new Website();
             _umbracoMapper.Map(websitePage, website);
 
+            // Navigation with multiple URLs
             var multiUrls = websitePage.GetPropertyValue<MultiUrls>("mainNavigation");
-            website.MainNavigation = _navigationViewModelFactory.Create(multiUrls);
+            website.MainNavigation = _navigationViewModelFactory.Create(multiUrls, currentPage);
 
             return website;
         }        

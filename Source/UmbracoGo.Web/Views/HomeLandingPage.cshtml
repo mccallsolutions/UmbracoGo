@@ -1,5 +1,8 @@
-﻿@inherits UmbracoViewPage<UmbracoGo.Web.Models.DocumentTypes.WebPages.LandingPages.HomeLandingPage>
+﻿@using System.Globalization
+@inherits UmbracoViewPage<UmbracoGo.Web.Models.DocumentTypes.WebPages.LandingPages.HomeLandingPage>
 @{
     Layout = "Shared/_Layout.cshtml";
 }
 <h1>@Model.PageTitle</h1>
+<p>@(100.ToString("C"))</p>
+<p>@DateTime.Now.ToString(CultureInfo.CurrentUICulture)</p>

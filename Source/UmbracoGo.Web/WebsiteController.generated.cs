@@ -72,15 +72,19 @@ namespace UmbracoGo.Web.Controllers.SurfaceControllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass
         {
+            public readonly string DocType = "DocType";
             public readonly string SiteName = "SiteName";
             public readonly string MainNavigation = "MainNavigation";
+            public readonly string LanguageSelector = "LanguageSelector";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
+            public const string DocType = "DocType";
             public const string SiteName = "SiteName";
             public const string MainNavigation = "MainNavigation";
+            public const string LanguageSelector = "LanguageSelector";
         }
 
 
@@ -94,9 +98,13 @@ namespace UmbracoGo.Web.Controllers.SurfaceControllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string _LanguageIsoCode = "_LanguageIsoCode";
+                public readonly string _LanguageSelector = "_LanguageSelector";
                 public readonly string _MainNavigation = "_MainNavigation";
                 public readonly string _SiteName = "_SiteName";
             }
+            public readonly string _LanguageIsoCode = "~/Views/Website/_LanguageIsoCode.cshtml";
+            public readonly string _LanguageSelector = "~/Views/Website/_LanguageSelector.cshtml";
             public readonly string _MainNavigation = "~/Views/Website/_MainNavigation.cshtml";
             public readonly string _SiteName = "~/Views/Website/_SiteName.cshtml";
         }
@@ -106,6 +114,17 @@ namespace UmbracoGo.Web.Controllers.SurfaceControllers
     public partial class T4MVC_WebsiteController : UmbracoGo.Web.Controllers.SurfaceControllers.WebsiteController
     {
         public T4MVC_WebsiteController() : base(Dummy.Instance) { }
+
+        [NonAction]
+        partial void DocTypeOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult DocType()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DocType);
+            DocTypeOverride(callInfo);
+            return callInfo;
+        }
 
         [NonAction]
         partial void SiteNameOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
@@ -126,6 +145,17 @@ namespace UmbracoGo.Web.Controllers.SurfaceControllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.MainNavigation);
             MainNavigationOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void LanguageSelectorOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult LanguageSelector()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.LanguageSelector);
+            LanguageSelectorOverride(callInfo);
             return callInfo;
         }
 

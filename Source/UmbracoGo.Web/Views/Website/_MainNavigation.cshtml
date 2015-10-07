@@ -3,5 +3,7 @@
 
 @foreach (NavigationItemViewModel item in Model.Items)
 {
-    <li><a href="@item.Url" target="@item.Target">@item.Text</a></li>
+    string css = item.IsSelected ? "active" : string.Empty;
+
+    <li role="presentation" class="@css"><a href="@item.Url" target="@item.Target">@item.Text</a></li>
 }

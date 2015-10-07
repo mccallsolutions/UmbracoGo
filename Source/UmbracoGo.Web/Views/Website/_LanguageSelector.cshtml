@@ -1,0 +1,21 @@
+﻿@using UmbracoGo.Web.Models.ViewModels
+@inherits UmbracoViewPage<LanguageSelectorViewModel>
+@if (Model.DomainItems.Any())
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                <span>@Model.SelectedDomainItem.Text</span>
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+                @foreach (NavigationItemViewModel domainItem in Model.DomainItems)
+                {
+                    string css = domainItem.IsSelected ? "active" : string.Empty;
+
+                    <li role="presentation" class="@css"><a href="@domainItem.Url" rel="@domainItem.Rel" target="@domainItem.Target">@domainItem.Text</a></li>
+                }                
+            </ul>
+        </li>
+    </ul>
+}

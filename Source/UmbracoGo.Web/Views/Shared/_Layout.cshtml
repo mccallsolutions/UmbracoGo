@@ -1,7 +1,7 @@
 ﻿@using ClientDependency.Core.Mvc
 @using UmbracoGo.Web
 <!DOCTYPE html>
-<html>
+<html lang="@Html.Action(MVC.Website.DocType())">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,12 +23,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="/" class="navbar-brand">@Html.Action(MVC.Website.SiteName())</a>                
+                <a href="/" class="navbar-brand">@Html.Action(MVC.Website.SiteName())</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     @Html.Action(MVC.Website.MainNavigation())
                 </ul>
+                @Html.Action(MVC.Website.LanguageSelector())
             </div>
         </div>
     </div>
@@ -39,11 +40,11 @@
         <footer>
             <p>&copy; @DateTime.Now.Year - @Html.Action(MVC.Website.SiteName())</p>
         </footer>
-    </div>    
+    </div>
     @{
         Html.RequiresJs("~/Scripts/jquery-2.1.4.min.js");
         Html.RequiresJs("~/Scripts/bootstrap.min.js");
     }
-    @Html.RenderJsHere()    
+    @Html.RenderJsHere()
 </body>
 </html>
