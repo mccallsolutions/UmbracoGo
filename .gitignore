@@ -196,8 +196,11 @@ FakesAssemblies/
 *.opt
 
 # Custom Settings
-Source/UmbracoGo.Web/App_Data/*
-!Source/UmbracoGo.Web/App_Data/Umbraco.sdf
+Source/UmbracoGo.Web/App_Data/cache/
+Source/UmbracoGo.Web/App_Data/Logs/
+Source/UmbracoGo.Web/App_Data/NuGetBackup/
+Source/UmbracoGo.Web/App_Data/TEMP/
+Source/UmbracoGo.Web/App_Data/umbraco.config
 Source/UmbracoGo.Web/umbraco/
 Source/UmbracoGo.Web/umbraco_client/
 Source/UmbracoGo.Web/uSync.Archive/
