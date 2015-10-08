@@ -195,15 +195,13 @@ FakesAssemblies/
 # Visual Studio 6 workspace options file
 *.opt
 
-# Custom Settings
-Source/UmbracoGo.Web/App_Data/cache/
-Source/UmbracoGo.Web/App_Data/Logs/
-Source/UmbracoGo.Web/App_Data/NuGetBackup/
-Source/UmbracoGo.Web/App_Data/TEMP/
-Source/UmbracoGo.Web/App_Data/umbraco.config
+# Umbraco Settings
+Source/UmbracoGo.Web/App_Data/*
+!Source/UmbracoGo.Web/App_Data/Umbraco.sdf
+!Source/UmbracoGo.Web/App_Data/packages/
+!Source/UmbracoGo.Web/App_Data/packages/*
 Source/UmbracoGo.Web/umbraco/
 Source/UmbracoGo.Web/umbraco_client/
 Source/UmbracoGo.Web/uSync.Archive/
 Source/UmbracoGo.Web/media/
 Source/UmbracoGo.Web/install/
-Source/packages/
