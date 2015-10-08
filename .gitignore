@@ -205,3 +205,4 @@ Source/UmbracoGo.Web/umbraco_client/
 Source/UmbracoGo.Web/uSync.Archive/
 Source/UmbracoGo.Web/media/
 Source/UmbracoGo.Web/install/
+!Source/UmbracoGo.Web/Lib/**/*

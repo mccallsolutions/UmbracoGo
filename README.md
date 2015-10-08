@@ -12,34 +12,44 @@ I use a SQL CE database with a single admin user:
 You can change all of these settings to suit your setup. I explain customising the solution below. It takes 5 minutes!
 
 ## What's in the box?
-I have tried to install the most useful things in Umbraco that I use all the time.
+I have tried to implement the most useful things in Umbraco that I use all the time.
 
 ### Strongly typed document types and views
-I make use of strongly typed document types from Umbraco's CurrentPage so our view models are clean and I don't have any logic within the Razor views. All mapping from CurrentPage to strongly typed document types is done using a factory pattern and UmbracoMapper.
+I make use of strongly typed document types from Umbraco's CurrentPage so our view models are clean and I don't have any logic within the Razor views. All mapping from CurrentPage to strongly typed document types is done using a factory pattern and [UmbracoMapper](https://github.com/AndyButland/UmbracoMapper).
 
-I provide som starting document types for best practice (see  Base Document Types below).
+I provide some starting document types for best practice (see  Base Document Types below).
 
 ### Nuget based
 The solution is built on a empty MVC solution with Umbraco 7.3.0 on top and some other useful NuGet packages. 
 
 Here are some of the packages included that are worth mentioning:
 
-- uSync 3.0.2 (Auto syncing of Umbraco types to different environments)
-- UmbracoMapper 1.6.0 (AutoMapper for Umbraco - great package)
-- ClientDependency MVC 5 1.8.0 (Minified JavaScript and CSS)
-- T4MVC (Strongly types controller and views)
-- Bootstrap 3.3.5 (Responsive layout framework)
-- Ninject for MVC 5 (Dependency injection)
-- Multi URL Picker 1.3.1 (Generic navigation)
+- [Umbraco](https://github.com/umbraco/Umbraco-CMS/) (I think we might need this)
+- [uSync](https://github.com/KevinJump/jumps.umbraco.usync) (Auto syncing of Umbraco types to different environments)
+- [UmbracoMapper](https://github.com/AndyButland/UmbracoMapper) (AutoMapper for Umbraco - great package)
+- [ClientDependency](https://github.com/Shazwazza/ClientDependency) (Minified JavaScript and CSS)
+- [T4MVC](https://github.com/T4MVC/T4MVC) (Strongly types controller and views)
+- [Bootstrap](http://getbootstrap.com/) (Responsive layout framework)
+- [Ninject](https://github.com/ninject/ninject) (Dependency injection)
+- [Multi URL Picker](https://www.nuget.org/packages/RJP.UmbracoMultiUrlPicker) (Generic navigation)
 
-### Source safe compatible
-This Visual Studio solution is built to be source safe (Git) compatible so I don't store anything unnecessary in our repositories. Everything I require is automatically pulled in using NuGet packages.
+### Umbraco packages
+I try to use Nuget packages whenever possible but sometimes you have to install Umbraco packages. This is a pain in source control as you need to manually include the files that are installed. Package dlls are stored in the Lib and copied to the bin on build. Here are the packages I use:
+
+- [Cultiv.DynamicRobots](https://our.umbraco.org/projects/website-utilities/cultiv-dynamicrobots/)  (Awesome tool for multilingual robotos.txt)
+- [Cultiv Search Engine Sitemap (Razor edition)](https://our.umbraco.org/projects/website-utilities/cultiv-search-engine-sitemap/) (Search engine sitemap generator)
+
+### Source safe friendly
+This Visual Studio solution is built to be source safe (Git) friendly so I don't store anything unnecessary in our repositories. Everything I require is automatically pulled in using NuGet packages.
 
 ### Responsive layout
 I provide out the box Boostrap so you can immeidately start building responsive sites, but if you don't want to use this it is easy to remove the Nuget package (see Customize the Solution below).
 
 ### Accessiblity
 I follow good accessibility standards WCAG 2 AA.
+
+### Multilingual sites
+I provide multilingual site setup in Umbraco with related langauge nodes. This does mean setting up some host names to run the site but this is easily done in the Customize the Solution section below.
 
 ## Customize the Solution
 So you want this solution to be yours?
