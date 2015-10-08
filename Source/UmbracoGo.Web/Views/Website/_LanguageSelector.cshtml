@@ -13,8 +13,10 @@
                 {
                     string css = domainItem.IsSelected ? "active" : string.Empty;
 
-                    <li role="presentation" class="@css"><a href="@domainItem.Url" rel="@domainItem.Rel" target="@domainItem.Target">@domainItem.Text</a></li>
-                }                
+                    <li role="presentation" class="@css">
+                        <a href="@domainItem.Url" hreflang="@domainItem.LanguageIsoCode" rel="alternate" target="@domainItem.Target">@domainItem.Text</a>
+                    </li>
+                }
             </ul>
         </li>
     </ul>

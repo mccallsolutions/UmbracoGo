@@ -4,8 +4,6 @@ using System.Globalization;
 using System.Linq;
 using RJP.MultiUrlPicker.Models;
 using Umbraco.Core.Models;
-using umbraco.editorControls;
-using Umbraco.Web;
 using UmbracoGo.Web.Factories.Contracts;
 using UmbracoGo.Web.Models.DocumentTypes.SiteData;
 using UmbracoGo.Web.Models.ViewModels;
@@ -51,7 +49,7 @@ namespace UmbracoGo.Web.Factories
                     Url = string.Format("{0}://{1}", requestUrl.Scheme, x.DomainName),
                     Text = new CultureInfo(x.LanguageIsoCode).NativeName,
                     IsSelected = website.Id == x.RootContentId,
-                    Rel = x.LanguageIsoCode,
+                    LanguageIsoCode = x.LanguageIsoCode,
                     Target = "_self"
                 })
                 .OrderBy(x => x.Text)
