@@ -84,16 +84,26 @@ I want to have a consistent way of accessing Umbraco content and displaying this
 ### Models
 There are two types of Models: 
 	
-- *DocumentTypes* (POCOs representing Umbraco document types)
-- *ViewModels* (POCOs for various partial views or wrappers for DocumentType view models)
+- **DocumentTypes** (POCOs representing Umbraco document types)
+- **ViewModels** (POCOs for various partial views or wrappers for DocumentType view models)
 
-Both are view models but just categorized differently. 
+Both are view models but just categorized differently. A DocumentType model might be the view model for a page or we might need to create a ViewModel to pull in certain DocumentType properties. It all depends on the view requirements. The generation of these models is done using factories. These are explained below:
 
 #### CurrentPageMapperFactory
-	
-Umbraco content from _IPublishedContent_ is mapped using _CurrentPageMapperFactory_ and _UmbracoMapper_ to strongly typed view models that we can use in our views. 
+This is the main factory that interacts with Umbraco. Umbraco content from _IPublishedContent_ is mapped using _CurrentPageMapperFactory_ and _UmbracoMapper_ to strongly typed view models that we can use in our views. 
 
 _CurrentPageMapperFactory_ provides a consistent way to generate POCO view models from document types. Its gives us the chance to parse Umbraco property values and allow for fall over values or generation of custom view models. This stops logic appearing in our Razor views.
 
+#### NavigationViewModelFactory
+This factory generates generic navigation view models (text, url, open in new window).
+
 ### Views
+Standard CSHTML Razor views.
+
 ### Controllers
+I have two types of controllers as specified by Umbraco:
+
+- **RenderMvcControllers** (These controllers are used to display Umbraco URLs and override the default Index view. Used for displaying current template.)
+- **SurfaceControllers** (These controllers are usually for partial views and things like forms.)
+
+On all our controllers we will inject _CurrentPageMapperFactory_ or any other factory interface to get a nice POCO view models. 
