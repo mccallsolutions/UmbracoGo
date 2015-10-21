@@ -49,13 +49,13 @@ I provide out the box Boostrap so you can immeidately start building responsive 
 I follow good accessibility standards WCAG 2 AA.
 
 ### Multilingual sites
-I provide multilingual site setup in Umbraco with related langauge nodes. This does mean setting up some host names to run the site but this is easily done in the Customize the Solution section below.
+I provide multilingual site setup in Umbraco with related langauge nodes. This does mean setting up some host names (uk.umbracogo.local and us.umbracogo.local) to run the site but this is easily done and can be customized in the Customize the Solution section below.
 
 ## Customize the Solution
 So you want this solution to be yours?
 
 ## Base Document Types
-We have a a few simple document types to get you started. They allow for multilingual sites and basic SEO. Its the best way to organise (I've found) common site document types.
+I have a few simple document types to get you started. They allow for multilingual sites and basic SEO. Its the best way to organise (I've found) common site document types.
 
 - **Site Data** (Empty - used as folder)
   - **Website** (Root node for each culture/domain with common site settings.)
@@ -77,3 +77,23 @@ We have a a few simple document types to get you started. They allow for multili
     - **Content Web Page** (Example content page with image)
   - **Landing Pages** (Empty - used as folder)
     - **Home Landing Page** (Example landing page.)
+
+## Models, Views and Controllers
+I want to have a consistent way of accessing Umbraco content and displaying this to the user, but also follow common MVC conventions. In order to achive this goal I come up with the following architecture which I feel uses Umbraco and MVC within Visual Studio in a consistent and easy to use way.
+
+### Models
+There are two types of Models: 
+	
+- *DocumentTypes* (POCOs representing Umbraco document types)
+- *ViewModels* (POCOs for various partial views or wrappers for DocumentType view models)
+
+Both are view models but just categorized differently. 
+
+#### CurrentPageMapperFactory
+	
+Umbraco content from _IPublishedContent_ is mapped using _CurrentPageMapperFactory_ and _UmbracoMapper_ to strongly typed view models that we can use in our views. 
+
+_CurrentPageMapperFactory_ provides a consistent way to generate POCO view models from document types. Its gives us the chance to parse Umbraco property values and allow for fall over values or generation of custom view models. This stops logic appearing in our Razor views.
+
+### Views
+### Controllers
